@@ -7,30 +7,45 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
+@Table(name = "RH_T_RecursoHumano")
 //@Data
 public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
+    @Column(name = "Nombre", nullable = false, length = 50)
     private String name;
-    private String email;
-    private String jobTitle;
-    private String phone;
-    private String imageUrl;
-    @Column(nullable = false, updatable = false)
-    private String employeeCode;
+    @Column(name="PrimerApellido", length = 50)
+    private String firstSurname;
+    @Column(name="SegundoApellido", length = 50)
+    private String secondSurname;
+    @Column(name = "CURP", length = 50)
+    private String curp;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Puesto_id", referencedColumnName = "id")
+    private Puesto puesto_id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Estado_id", referencedColumnName = "id")
+    private Estado estado_id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Departamento_id", referencedColumnName = "id")
+    private Departamento departamento_id;
 
     public Employee() {
     }
 
-    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
+    public Employee(String name, String firstSurname, String secondSurname, String curp, Puesto puesto_id, Estado estado_id, Departamento departamento_id) {
         this.name = name;
-        this.email = email;
-        this.jobTitle = jobTitle;
-        this.phone = phone;
-        this.imageUrl = imageUrl;
-        this.employeeCode = employeeCode;
+        this.firstSurname = firstSurname;
+        this.secondSurname = secondSurname;
+        this.curp = curp;
+        this.puesto_id = puesto_id;
+        this.estado_id = estado_id;
+        this.departamento_id = departamento_id;
     }
 
     public Long getId() {
@@ -49,44 +64,52 @@ public class Employee implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFirstSurname() {
+        return firstSurname;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFirstSurname(String firstSurname) {
+        this.firstSurname = firstSurname;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getSecondSurname() {
+        return secondSurname;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setSecondSurname(String secondSurname) {
+        this.secondSurname = secondSurname;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getCurp() {
+        return curp;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCurp(String curp) {
+        this.curp = curp;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Puesto getPuesto_id() {
+        return puesto_id;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setPuesto_id(Puesto puesto_id) {
+        this.puesto_id = puesto_id;
     }
 
-    public String getEmployeeCode() {
-        return employeeCode;
+    public Estado getEstado_id() {
+        return estado_id;
     }
 
-    public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
+    public void setEstado_id(Estado estado_id) {
+        this.estado_id = estado_id;
+    }
+
+    public Departamento getDepartamento_id() {
+        return departamento_id;
+    }
+
+    public void setDepartamento_id(Departamento departamento_id) {
+        this.departamento_id = departamento_id;
     }
 
     @Override
@@ -94,11 +117,12 @@ public class Employee implements Serializable {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", phone='" + phone + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", employeeCode='" + employeeCode + '\'' +
+                ", firstSurname='" + firstSurname + '\'' +
+                ", secondSurname='" + secondSurname + '\'' +
+                ", curp='" + curp + '\'' +
+                ", puesto_id=" + puesto_id +
+                ", estado_id=" + estado_id +
+                ", departamento_id=" + departamento_id +
                 '}';
     }
 }
