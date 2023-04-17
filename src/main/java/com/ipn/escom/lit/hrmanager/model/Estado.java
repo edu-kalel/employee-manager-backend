@@ -20,7 +20,7 @@ public class Estado implements Serializable {
     @Value("${some.key:true}")
     private boolean state;
 
-    @OneToMany(mappedBy = "estado_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "estado_id", fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Employee> employee = new ArrayList<>();
 

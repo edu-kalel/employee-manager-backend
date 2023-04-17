@@ -18,7 +18,7 @@ public class Departamento implements Serializable {
     @Column(name = "EstaActivo")
     private boolean state;
 
-    @OneToMany(mappedBy = "departamento_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "departamento_id", fetch = FetchType.EAGER)
     @JsonBackReference
     private List<Employee> employee = new ArrayList<>();
 

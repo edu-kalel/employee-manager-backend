@@ -18,7 +18,7 @@ public class Employee implements Serializable {
     @Column(name = "CURP", length = 50)
     private String curp;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "Puesto_id", referencedColumnName = "id")
     private Puesto puesto_id;
 

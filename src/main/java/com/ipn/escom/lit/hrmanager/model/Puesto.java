@@ -21,7 +21,7 @@ public class Puesto implements Serializable {
     @Value("${some.key:true}")
     private boolean state;
 
-    @OneToMany(mappedBy = "puesto_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "puesto_id", fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Employee> employee = new ArrayList<>();
 
