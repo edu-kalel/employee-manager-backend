@@ -51,6 +51,18 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(Employee employee){
+        // Obtener una instancia administrada de Departamento, puesto y estado
+        Departamento departamento = departamentoRepo.findDepartamentoById(employee.getDepartamento_id().getId())
+                .orElseThrow(() -> new UserNotFoundException("No se encontró el departamento con el ID proporcionado"));
+        Puesto puesto = puestoRepo.findPuestoById(employee.getPuesto_id().getId())
+                .orElseThrow(() -> new UserNotFoundException("No se encontró el puesto con el ID proporcionado"));
+        Estado estado = estadoRepo.findEstadoById(employee.getEstado_id().getId())
+                .orElseThrow(() -> new UserNotFoundException("No se encontró el estado con el ID proporcionado"));
+        // Asignar el departamento administrado a la entidad Employee
+
+        employee.setDepartamento_id(departamento);
+        employee.setPuesto_id(puesto);
+        employee.setEstado_id(estado);
         return employeeRepo.save(employee);
     }
 
