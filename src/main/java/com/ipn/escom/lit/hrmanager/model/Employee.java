@@ -1,14 +1,9 @@
 package com.ipn.escom.lit.hrmanager.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 @Table(name = "RH_T_RecursoHumano")
-//@Data
 public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

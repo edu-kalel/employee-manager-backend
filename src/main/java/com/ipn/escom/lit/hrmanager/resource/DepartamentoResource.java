@@ -1,4 +1,4 @@
-package com.ipn.escom.lit.hrmanager;
+package com.ipn.escom.lit.hrmanager.resource;
 
 import com.ipn.escom.lit.hrmanager.model.Departamento;
 import com.ipn.escom.lit.hrmanager.service.DepartamentoService;
