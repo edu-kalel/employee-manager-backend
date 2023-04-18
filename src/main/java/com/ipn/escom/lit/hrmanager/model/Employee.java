@@ -22,11 +22,11 @@ public class Employee implements Serializable {
     @JoinColumn(name = "Puesto_id", referencedColumnName = "id")
     private Puesto puesto_id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "Estado_id", referencedColumnName = "id")
     private Estado estado_id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "Departamento_id", referencedColumnName = "id")
     private Departamento departamento_id;
 
